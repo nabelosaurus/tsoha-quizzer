@@ -6,7 +6,12 @@ The application has two types of users – players and admins.
 
 ## Test the application
 
-https://tsoha-quizzer.herokuapp.com/
+<https://tsoha-quizzer.herokuapp.com/>
+
+Login can be tested with the following credentials, or a new user can be created by registering.
+
+    Username: foo
+    Password: foo
 
 ## What is working
 
