@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Add Quiz{% endblock %}
+{% block content %}
+<h2>Add Quiz</h2>
+<form action="/add-quiz" method="POST">
+    <label for="questions">Kuinka monta kysymystä?</label>
+    <input type="number" name="questions">
+    <input type="submit" value="Lähetä">
+</form>
+{% endblock %}

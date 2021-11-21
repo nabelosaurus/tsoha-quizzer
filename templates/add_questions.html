@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Add Questions{% endblock %}
+{% block content %}
+<h2>Add Questions</h2>
+<form action="/add-questions/{{number_of_questions}}" method="POST">
+{% for i in range(number_of_questions) %}
+<p>
+    <label for="question{{i+1}}">Kysymys {{ i+1 }}</label>
+    <input type="text" name="question{{i+1}}">
+    <label for="vastaus{{i+1}}">Vastaus {{ i+1 }}</label>
+    <input type="text" name="answer{{i+1}}">
+</p>
+{% endfor %}
+<input type="submit" value="Lähetä">
+</form>
+{% endblock %}

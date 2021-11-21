@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h2>Home</h2>
+{% if session.username %}
+<p> Olet kirjautunut nimellä {{ session.username }}</p>
+{% else %}
+<form action="/login" method="POST">
+    <label for="username">Tunnus: </label>
+    <input type="text" name="username">
+    <br><br>
+    <label for="password">Salasana: </label>
+    <input type="password" name="password">
+    <br>
+    <input type="submit" value="Kirjaudu">
+</form>
+{% endif %}
+{% for quiz in quizzes %}
+    <ul>
+        <li><a href="/quiz/{{ quiz.id }}">Quiz #{{ quiz.id }} - {{ quiz.date.strftime('%d.%m.%Y') }}</a></li>
+    </ul>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Quiz{% endblock %}
+{% block content %}
+<h2>Quiz</h2>
+<form action="">
+{% for question in questions %}
+    <ul>
+        <li>{{ question.question }}</li>
+        <input type="text" name="question.id">
+    </ul>
+    {% endfor %}
+<input type="submit" value="Lähetä">
+</form>
+{% endblock %}
