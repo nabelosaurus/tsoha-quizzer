@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = getenv("SECRET_KEY")
 
 ## Database ##
-app.config["SQLALCHEMY_DATABASE_URI"] = getenv("DATABASE_URL")
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql" + getenv("DATABASE_URL")[8:]
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = getenv("SQLALCHEMY_TRACK_MODIFICATIONS")
 db = SQLAlchemy(app)
 
