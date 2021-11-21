@@ -4,6 +4,29 @@ tsoha-quizzer is an application that allows users to partake in weekly quizzes. 
 
 The application has two types of users – players and admins.
 
+## Test the application
+
+https://tsoha-quizzer.herokuapp.com/
+
+## What is working
+
+- User login
+- User logout
+- User registration
+- Viewing and creation of quizzes and questions
+
+## What is missing
+
+- Refactor code into more easily maintainable packages.
+- Does not differentiate between regular users (players) and admin's. Anyone registering is essentially an admin with the priviliges to create new quizzes.
+- Answering quizzes is not yet implemented.
+- Scoring is not yet implemented.
+    - Top scores for quizzes, and for users is thus currently not yet implemented.
+- Messaging system is not implemented.
+- Bootstrap/Material UI etc.
+
+___
+
 ## Players
 - Login.
 - Logout.
