@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# For misc. stuff that shouldn't be commited
+nocommit/
