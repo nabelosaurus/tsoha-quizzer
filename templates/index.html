@@ -11,7 +11,7 @@
 
 {% block right_content %}
 {% if session.username %}
-<p> Olet kirjautunut nimellä {{ session.username }}</p>
+<p> You are logged in as {{ session.username }}</p>
 {% else %}
 <form action="/login" method="POST">
     <label for="username">Tunnus: </label>

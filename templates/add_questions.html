@@ -5,12 +5,12 @@
 <form action="/add-questions/{{number_of_questions}}" method="POST">
 {% for i in range(number_of_questions) %}
 <p>
-    <label for="question{{i+1}}">Kysymys {{ i+1 }}</label>
+    <label for="question{{i+1}}">Question {{ i+1 }}</label>
     <input type="text" name="question{{i+1}}">
-    <label for="vastaus{{i+1}}">Vastaus {{ i+1 }}</label>
+    <label for="vastaus{{i+1}}">Answer {{ i+1 }}</label>
     <input type="text" name="answer{{i+1}}">
 </p>
 {% endfor %}
-<input type="submit" value="Lähetä">
+<input type="submit" value="Answer">
 </form>
 {% endblock %}
