@@ -25,11 +25,24 @@
     <hr>
     
       <div class="row">
-        <div class="col-10">
+        <div class="col-9">
           {% block content %}{% endblock %}
         </div>
-        <div class="col-2">
-          {% block right_content %}{% endblock %}
+        <div class="col-3">
+          {% block right_content %}
+          {% if session.username %}
+          <p> You are logged in as {{ session.username }}</p>
+          {% else %}
+          <h3>Login</h3>
+          <form action="/login" method="POST">
+              <label for="username">Tunnus: </label>
+              <input type="text" name="username">
+              <label for="password">Salasana: </label>
+              <input type="password" name="password">
+              <input type="submit" value="Kirjaudu">
+          </form>
+          {% endif %}
+          {% endblock %}
         </div>
       </div>
     </div>

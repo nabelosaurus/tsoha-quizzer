@@ -8,19 +8,3 @@
     </ul>
 {% endfor %}
 {% endblock %}
-
-{% block right_content %}
-{% if session.username %}
-<p> You are logged in as {{ session.username }}</p>
-{% else %}
-<form action="/login" method="POST">
-    <label for="username">Tunnus: </label>
-    <input type="text" name="username">
-    <br><br>
-    <label for="password">Salasana: </label>
-    <input type="password" name="password">
-    <br>
-    <input type="submit" value="Kirjaudu">
-</form>
-{% endif %}
-{% endblock %}
