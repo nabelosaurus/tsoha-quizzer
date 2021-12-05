@@ -3,22 +3,35 @@
 {% block content %}
 <h2>Register</h2>
 <form action="/register" method="POST">
+    {{ form.hidden_tag() }}
     <p>
-    <label for="username">Username: </label>
-    <input type="text" name="username">
+        {{ form.username.label }}<br>
+        {{ form.username(size=50) }}<br>
+        {% for error in form.username.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
     </p>
     <p>
-    <label for="email">Email: </label>
-    <input type="text" name="email">
+        {{ form.email.label }}<br>
+        {{ form.email(size=50) }}<br>
+        {% for error in form.email.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
     </p>
     <p>
-    <label for="password">Password: </label>
-    <input type="password" name="password">
+        {{ form.password.label }}<br>
+        {{ form.password(size=50) }}<br>
+        {% for error in form.password.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
     </p>
     <p>
-    <label for="password-verification">Verify password: </label>
-    <input type="password" name="password-verification">
+        {{ form.password_verification.label }}<br>
+        {{ form.password_verification(size=50) }}<br>
+        {% for error in form.password_verification.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
     </p>
-    <input type="submit" value="Register">
+    <p>{{ form.submit() }}</p>
 </form>
 {% endblock %}

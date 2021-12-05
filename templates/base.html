@@ -44,11 +44,22 @@
           {% else %}
           <h3>Login</h3>
           <form action="/login" method="POST">
-              <label for="username">Tunnus: </label>
-              <input type="text" name="username">
-              <label for="password">Salasana: </label>
-              <input type="password" name="password">
-              <input type="submit" value="Kirjaudu">
+            {{ login_form.hidden_tag() }}
+            <p>
+              {{ login_form.username.label }}<br>
+              {{ login_form.username(size=24) }}<br>
+              {% for error in login_form.username.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+          </p>
+          <p>
+              {{ login_form.password.label }}<br>
+              {{ login_form.password(size=24) }}<br>
+              {% for error in login_form.password.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+          </p>
+          <p>{{ login_form.submit() }}</p>
           </form>
           {% endif %}
           {% endblock %}
