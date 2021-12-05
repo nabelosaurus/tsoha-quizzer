@@ -1,10 +1,15 @@
 from db import db
-from models import User
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 def login(username, password):
-    user = User.query.filter_by(username=username).first()
+    sql = """
+        SELECT id, username, email, password, is_admin
+        FROM users
+        WHERE users.username = :username
+        """
+    result = db.session.execute(sql, {"username": username})
+    user = result.fetchone()
     if not user:
         return False
     
@@ -19,13 +24,37 @@ def logout():
     del session["username"]
 
 def register(username, password, email):
-    username_exists = User.query.filter_by(username=username).first()
-    email_exists = User.query.filter_by(email=email).first()
-    if username_exists or email_exists:
+    sql = """
+        SELECT EXISTS(
+            SELECT username, email 
+            FROM users 
+            WHERE username=:username OR email=:email
+        )
+    """
+    result = db.session.execute(sql, {"username": username, "email":email})
+    exists = result.fetchone()[0]
+    if exists:
         return False
     
     hash_value = generate_password_hash(password)
-    user = User(username=username, password=hash_value, email=email)
-    db.session.add(user)
+    sql = """
+        INSERT INTO users (username, password, email, is_admin)
+        VALUES (:username, :password, :email, :is_admin)
+        """
+    db.session.execute(sql, {
+        "username": username,
+        "password": hash_value,
+        "email": email,
+        "is_admin": 0
+        }
+    )
     db.session.commit()
     return login(username, password)
+
+def get_logged_in_user():
+    logged_in_user = session.get("username", 0)
+    if not logged_in_user:
+        return False
+    sql = "SELECT * FROM users WHERE username=:username"
+    result = db.session.execute(sql, {"username":logged_in_user}).fetchone()
+    return result
