@@ -3,13 +3,24 @@
 {% block content %}
 <h2>All time top 25</h2>
 {% if results %}
-<table>
-    {% for result in results %}
-    <tr>
-        <td>{{ result.username }}</td>
-        <td>{{ result.sum }}</td>
-    </tr>
-    {% endfor %}
-</table>
+
+<table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Username</th>
+            <th scope="col">Points</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ result.username }}</td>
+            <td>{{ result.sum }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endif %}
 {% endblock %}
