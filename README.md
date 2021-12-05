@@ -10,8 +10,17 @@ The application has two types of users – players and admins.
 
 Login can be tested with the following credentials, or a new user can be created by registering.
 
-    Username: foo
-    Password: foo
+    Username: adminadmin
+    Password: adminadmin
+
+## Updates since last deadline
+
+- Refactored code to use SQL statements instead of using SQLAlchemy:s ORM.
+- Added Bootstrap for a more pleasing look and feel.
+- Taking part in quizzes by answering questions implemented.
+- Scoring system implemented.
+- Improved error messaging.
+- Now uses flask-wtforms for input validation and CSRF prevention (still not implemented on forms of non-fixed length)
 
 ## What is working
 
@@ -19,16 +28,18 @@ Login can be tested with the following credentials, or a new user can be created
 - User logout
 - User registration
 - Viewing and creation of quizzes and questions
+- Answering quizzes/questions
+- Scoring / Top score working
 
 ## What is missing
 
-- Refactor code into more easily maintainable packages.
 - Does not differentiate between regular users (players) and admin's. Anyone registering is essentially an admin with the priviliges to create new quizzes.
-- Answering quizzes is not yet implemented.
-- Scoring is not yet implemented.
-    - Top scores for quizzes, and for users is thus currently not yet implemented.
 - Messaging system is not implemented.
-- Bootstrap/Material UI etc.
+- Robust error handling.
+- High scores for logged in user, and top high score for specific quizzes.
+- Currently a user can take part in the same quiz multiple times. This should not be possible according to the original specificaitons.
+- After a user has answered a quiz, the answers should be displayed when viewing the quiz.
+- All forms are still not being validated.
 
 ___
 
