@@ -24,16 +24,16 @@ def register():
         form_password_verification = request.form["password-verification"]
 
         if form_password != form_password_verification:
-            return redirect("/fail")
+            return render_template("fail.html", message="Password and verification don't match.")
         if users.register(form_username, form_password, form_email):
             return redirect("/")
         else:
-            return redirect("/fail")
+            return render_template("fail.html", message="Username or email already registered.")
 
 
 @app.route("/fail")
-def fail():
-    return render_template("fail.html")
+def fail(message):
+    return render_template("fail.html", message=message)
 
 
 @app.route("/login", methods=["POST"])
@@ -43,7 +43,7 @@ def login():
     if users.login(form_username, form_password):
         return redirect("/")
     else:
-        return redirect("/fail")
+        return render_template("fail.html", message="Wrong username or password.")
 
 
 @app.route("/logout")
@@ -69,7 +69,7 @@ def add_new_quiz_with_questions(number_of_questions):
         if quizzer.add_new_quiz_with_questions(request, number_of_questions):
             return redirect("/")
         else:
-            return redirect("/fail")
+            return render_template("fail.html", message="Could not add quiz.")
     else:
         return render_template("add_questions.html", number_of_questions=number_of_questions)
 
