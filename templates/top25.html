@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}All time top 25{% endblock %}
+{% block content %}
+<h2>All time top 25</h2>
+{% if results %}
+<table>
+    {% for result in results %}
+    <tr>
+        <td>{{ result.username }}</td>
+        <td>{{ result.sum }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

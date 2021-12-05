@@ -2,6 +2,14 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <h2>Home</h2>
+{% for quiz in quizzes %}
+    <ul>
+        <li><a href="/quiz/{{ quiz.id }}">Quiz #{{ quiz.id }} - {{ quiz.date.strftime('%d.%m.%Y') }}</a></li>
+    </ul>
+{% endfor %}
+{% endblock %}
+
+{% block right_content %}
 {% if session.username %}
 <p> Olet kirjautunut nimellä {{ session.username }}</p>
 {% else %}
@@ -15,9 +23,4 @@
     <input type="submit" value="Kirjaudu">
 </form>
 {% endif %}
-{% for quiz in quizzes %}
-    <ul>
-        <li><a href="/quiz/{{ quiz.id }}">Quiz #{{ quiz.id }} - {{ quiz.date.strftime('%d.%m.%Y') }}</a></li>
-    </ul>
-{% endfor %}
 {% endblock %}

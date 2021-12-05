@@ -2,11 +2,11 @@
 {% block title %}Quiz{% endblock %}
 {% block content %}
 <h2>Quiz</h2>
-<form action="">
+<form action="/answer" method="POST">
 {% for question in questions %}
     <ul>
         <li>{{ question.question }}</li>
-        <input type="text" name="question.id">
+        <input type="text" name="{{ question.id }}">
     </ul>
     {% endfor %}
 <input type="submit" value="Lähetä">
